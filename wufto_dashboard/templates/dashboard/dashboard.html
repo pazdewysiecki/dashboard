@@ -1,0 +1,73 @@
+&nbsp
+&nbsp
+&nbsp
+     Dashboard
+&nbsp
+<div>
+    <div>
+        <form method="get">
+          {% csrf_token %}
+        </form>
+    </div>
+</div>
+</div>
+    {% if items_1 %}
+    {% for item_1 in items_1 %}
+    <div class="accordion" id="accordionExample">
+        <div id="collapse-{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ forloop.counter }}" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Moneda</th>
+                        <th scope="col">percentage %</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{item_1.moneda}}</th>
+                        <th scope="row">{{item_1.percentage}}</th>
+                    <tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h2>No existen órdenes</h2>
+    {% endif %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/af-2.3.7/b-2.2.2/date-1.1.2/fc-4.0.2/r-2.2.9/datatables.min.js"></script>
+            <script>
+                var $ = jQuery.noConflict();
+                $(document).ready(function(){
+                            $('#dashboard').DataTable({
+                                language: {
+                                        decimal: "",
+                                        emptyTable: "No hay información",
+                                        info: "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                                        infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
+                                        infoFiltered: "(Filtrado de _MAX_ total entradas)",
+                                        infoPostFix: "",
+                                        thousands: ",",
+                                        lengthMenu: "Mostrar _MENU_ Entradas",
+                                        loadingRecords: "Cargando...",
+                                        processing: "Procesando...",
+                                        search: "Buscar:",
+                                        zeroRecords: "Sin resultados encontrados",
+                                        paginate: {
+                                        first: "Primero",
+                                        last: "Ultimo",
+                                        next: "Siguiente",
+                                        previous: "Anterior",
+                                        }
+                                    },
+                                lengthMenu: [[5,10,50,100],[5,10,50,100]],
+
+                        })
+                })
+
+            </script>
+
